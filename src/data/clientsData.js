@@ -344,7 +344,7 @@ export const CLIENTS = [
     engagementDuration: "Collaborative Partnership",
     type: "Agency Partnership",
     typeBadge: "Agency Partnership",
-    logo: "/logos/IMG_0795.PNG",
+    logo: "/logos/winspert.PNG",
     videoUrl: "/videos/01_devops.mp4",
     poster: "/thumbnails/01_devops.jpg",
     description: "Multi-platform growth strategies, trend research, website development support, and AI workflow integration executed in collaboration with a partner agency.",

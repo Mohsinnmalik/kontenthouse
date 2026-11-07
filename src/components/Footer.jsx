@@ -49,7 +49,7 @@ export default function Footer() {
           <div className="flex flex-col gap-2.5">
             <span className="text-smoke">Network</span>
             {[
-              ["Instagram", "https://instagram.com/kontenthouse"],
+              ["Instagram", "https://www.instagram.com/kontent.housee?xtok=OW5rcWZqdG4wNGlq&utm_source=qr"],
               ["LinkedIn", "https://linkedin.com/company/kontenthouse"],
               ["X (Twitter)", "https://x.com/kontenthouse"],
               ["YouTube", "https://youtube.com/@kontenthouse"],

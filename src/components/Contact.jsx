@@ -1,15 +1,20 @@
 import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import confetti from "canvas-confetti";
-import { ArrowUpRight, Instagram, Linkedin, Twitter, Mail, MessageCircle, Phone, Loader2, CheckCircle2 } from "lucide-react";
+import { ArrowUpRight, Instagram, Linkedin, Twitter, MessageCircle, Phone, Loader2, CheckCircle2 } from "lucide-react";
 import { FadeUp, ScrollLine } from "@/lib/anim";
 
 const BUDGETS = ["< ₹25k / month", "₹25k – ₹50k / month", "₹50k – ₹1L / month", "₹1L+ / month (Enterprise & Full-Floor)"];
 const WHATSAPP_RAW = "917028069181";
 const WHATSAPP_DISPLAY = "+91 70280 69181";
 
+const CALL_RAW = "918208059181";
+const CALL_DISPLAY = "+91 82080 59181";
+
+const INSTAGRAM_URL = "https://www.instagram.com/kontent.housee?xtok=OW5rcWZqdG4wNGlq&utm_source=qr";
+
 const SOCIALS = [
-  { icon: Instagram, label: "Instagram", href: "https://instagram.com/kontenthouse" },
+  { icon: Instagram, label: "Instagram", href: INSTAGRAM_URL },
   { icon: Linkedin, label: "LinkedIn", href: "https://linkedin.com/company/kontenthouse" },
   { icon: Twitter, label: "X (Twitter)", href: "https://x.com/kontenthouse" },
 ];
@@ -17,7 +22,6 @@ const SOCIALS = [
 export default function Contact({ prefilledBrand = "" }) {
   const [form, setForm] = useState({
     name: "",
-    email: "",
     phone: "",
     brand: prefilledBrand,
     budget: BUDGETS[1],
@@ -68,7 +72,6 @@ export default function Contact({ prefilledBrand = "" }) {
 -------------------------------------
 *Name:* ${form.name}
 *Brand / Company:* ${form.brand}
-*Work Email:* ${form.email}
 *Phone / WhatsApp:* ${form.phone || "Not specified"}
 *Monthly Budget:* ${form.budget}
 
@@ -83,7 +86,7 @@ _Sent via KontentHouse Agency Website_`;
       window.open(whatsappUrl, "_blank");
 
       setSentSuccess(true);
-      setForm({ name: "", email: "", phone: "", brand: "", budget: BUDGETS[1], message: "" });
+      setForm({ name: "", phone: "", brand: "", budget: BUDGETS[1], message: "" });
     } catch (err) {
       toast.error("Could not complete redirect.", {
         description: "Please connect with us directly on WhatsApp below.",
@@ -160,44 +163,32 @@ _Sent via KontentHouse Agency Website_`;
                   />
                 </div>
                 <div>
-                  <label htmlFor="cf-email" className="mb-1 block font-mono2 text-[11px] uppercase tracking-[0.25em] text-smoke">
-                    Work Email *
-                  </label>
-                  <input
-                    id="cf-email"
-                    type="email"
-                    required
-                    value={form.email}
-                    onChange={set("email")}
-                    placeholder="kabir@brand.com"
-                    className={inputCls}
-                  />
-                </div>
-                <div>
                   <label htmlFor="cf-phone" className="mb-1 block font-mono2 text-[11px] uppercase tracking-[0.25em] text-smoke">
-                    Phone / WhatsApp
+                    Phone / WhatsApp *
                   </label>
                   <input
                     id="cf-phone"
+                    required
                     value={form.phone}
                     onChange={set("phone")}
-                    placeholder="+91 70280 69181"
+                    placeholder="+91 82080 59181"
                     className={inputCls}
                   />
                 </div>
-                <div>
-                  <label htmlFor="cf-brand" className="mb-1 block font-mono2 text-[11px] uppercase tracking-[0.25em] text-smoke">
-                    Brand / Company *
-                  </label>
-                  <input
-                    id="cf-brand"
-                    required
-                    value={form.brand}
-                    onChange={set("brand")}
-                    placeholder="e.g. Your Business or Brand Name"
-                    className={inputCls}
-                  />
-                </div>
+              </div>
+
+              <div>
+                <label htmlFor="cf-brand" className="mb-1 block font-mono2 text-[11px] uppercase tracking-[0.25em] text-smoke">
+                  Brand / Company *
+                </label>
+                <input
+                  id="cf-brand"
+                  required
+                  value={form.brand}
+                  onChange={set("brand")}
+                  placeholder="e.g. Your Business or Brand Name"
+                  className={inputCls}
+                />
               </div>
 
               <div>
@@ -272,7 +263,7 @@ _Sent via KontentHouse Agency Website_`;
                 Direct Agency Lines
               </p>
               <div className="flex flex-col gap-3">
-                {/* Updated WhatsApp with user's number */}
+                {/* WhatsApp Hotline */}
                 <a
                   href={`https://wa.me/${WHATSAPP_RAW}`}
                   target="_blank"
@@ -291,9 +282,9 @@ _Sent via KontentHouse Agency Website_`;
                   <ArrowUpRight size={16} className="text-smoke group-hover:text-acid transition-transform group-hover:rotate-45" />
                 </a>
 
-                {/* Updated Direct Phone with user's number */}
+                {/* Direct Calling - User updated: 8208059181 */}
                 <a
-                  href={`tel:+${WHATSAPP_RAW}`}
+                  href={`tel:+${CALL_RAW}`}
                   className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-acid hover:bg-white/[0.03]"
                 >
                   <div className="flex flex-col">
@@ -302,23 +293,26 @@ _Sent via KontentHouse Agency Website_`;
                       Direct Calling
                     </span>
                     <span className="font-mono2 text-xs text-smoke group-hover:text-bone mt-1 pl-7">
-                      {WHATSAPP_DISPLAY}
+                      {CALL_DISPLAY}
                     </span>
                   </div>
                   <ArrowUpRight size={16} className="text-smoke group-hover:text-acid transition-transform group-hover:rotate-45" />
                 </a>
 
+                {/* Instagram Direct Link */}
                 <a
-                  href="mailto:hello@kontenthouse.agency"
-                  className="group flex items-center justify-between rounded-2xl border border-white/10 px-5 py-4 transition-all duration-300 hover:border-acid hover:bg-white/[0.03]"
+                  href={INSTAGRAM_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.02] px-5 py-4 transition-all duration-300 hover:border-acid hover:bg-white/[0.03]"
                 >
                   <div className="flex flex-col">
                     <span className="flex items-center gap-2.5 font-display text-sm font-bold uppercase tracking-wider text-bone group-hover:text-acid">
-                      <Mail size={18} className="text-acid" />
-                      Email Desk
+                      <Instagram size={18} className="text-acid" />
+                      Instagram Official
                     </span>
                     <span className="font-mono2 text-xs text-smoke group-hover:text-bone mt-1 pl-7">
-                      hello@kontenthouse.agency
+                      @kontent.housee
                     </span>
                   </div>
                   <ArrowUpRight size={16} className="text-smoke group-hover:text-acid transition-transform group-hover:rotate-45" />
