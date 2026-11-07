@@ -9,7 +9,7 @@ const WHATSAPP_RAW = "917028069181";
 const WHATSAPP_DISPLAY = "+91 70280 69181";
 
 const CALL_RAW = "918208059181";
-const CALL_DISPLAY = "+91 82080 59181";
+const CALL_DISPLAY = "+91 820 805 9181";
 
 const INSTAGRAM_URL = "https://www.instagram.com/kontent.housee?xtok=OW5rcWZqdG4wNGlq&utm_source=qr";
 
@@ -171,7 +171,7 @@ _Sent via KontentHouse Agency Website_`;
                     required
                     value={form.phone}
                     onChange={set("phone")}
-                    placeholder="+91 82080 59181"
+                    placeholder="+91 820 805 9181"
                     className={inputCls}
                   />
                 </div>
